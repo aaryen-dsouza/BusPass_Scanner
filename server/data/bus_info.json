@@ -1,0 +1,81 @@
+[{
+  "_id": {
+    "$oid": "61323c0c46f18939fbc775b7"
+  },
+  "name": "Bus 1",
+  "busBranch": "Vasai",
+  "image": "No Img",
+  "vacantSeats": 15,
+  "totalSeats": 30,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61323c4c46f18939fbc775b9"
+  },
+  "name": "Bus 2",
+  "busBranch": "Vasai",
+  "image": "No Img",
+  "vacantSeats": 14,
+  "totalSeats": 30,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61323c5c46f18939fbc775bb"
+  },
+  "name": "Bus 2",
+  "busBranch": "Borivali",
+  "image": "No Img",
+  "vacantSeats": 14,
+  "totalSeats": 30,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61323c7746f18939fbc775bd"
+  },
+  "name": "Bus 1",
+  "busBranch": "Borivali",
+  "image": "No Img",
+  "vacantSeats": 20,
+  "totalSeats": 30,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61323d1946f18939fbc775c0"
+  },
+  "name": "Bus 1",
+  "busBranch": "Mira Road",
+  "image": "No Img",
+  "vacantSeats": 22,
+  "totalSeats": 30,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61323d2146f18939fbc775c2"
+  },
+  "name": "Bus 2",
+  "busBranch": "Mira Road",
+  "image": "No Img",
+  "vacantSeats": 25,
+  "totalSeats": 30,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6132486956cb920860dea423"
+  },
+  "name": "Bus 3",
+  "busBranch": "Vasai",
+  "image": "No Img",
+  "vacantSeats": 20,
+  "totalSeats": 30,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "613248d956cb920860dea425"
+  },
+  "name": "Bus 4",
+  "busBranch": "Borivali",
+  "image": "No Img",
+  "vacantSeats": 20,
+  "totalSeats": 30,
+  "__v": 0
+}]
