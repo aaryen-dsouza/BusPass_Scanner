@@ -1,13 +1,18 @@
-import React from 'react'
-import { View, Text, StyleSheet, Button } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import globalStyles from '../styles/globalStyles';
 
 const Role = ({ navigation }) => {
     return (
-        <View style={styles.container}>
+        <View style={{ ...globalStyles.container, alignItems: 'center' }}>
 
-            <Text style={{ fontFamily: 'Nunito-Regular', fontSize: 25 }}> Select your role</Text>
-            <Button title='Student' onPress={() => navigation.navigate('Login', { type: 'Student' })} />
-            <Button title='Bus Faculty' onPress={() => navigation.navigate('Login', { type: 'Bus faculty' })} />
+            <Text style={{ fontFamily: 'Nunito-Regular', fontSize: 24, marginTop: 190, marginBottom: 40, borderBottomWidth: 1, borderBottomColor: '#000' }}>Select your role</Text>
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('Login', { type: 'Student' })}>
+                <Text style={styles.roleText}>Student</Text>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('Login', { type: 'Bus faculty' })}>
+                <Text style={{ ...styles.roleText, paddingHorizontal: 80 }}>Bus Faculty</Text>
+            </TouchableWithoutFeedback>
         </View>
     )
 }
@@ -16,10 +21,13 @@ export default Role;
 
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+    roleText: {
+        fontFamily: 'Nunito-Regular',
+        fontSize: 22,
+        elevation: 1,
+        borderColor: '#000',
+        paddingHorizontal: 100,
+        paddingVertical: 10,
+        marginBottom: 35
+    }
 });

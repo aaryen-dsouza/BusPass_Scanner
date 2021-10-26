@@ -1,17 +1,14 @@
 
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import Role from './Screens/Role';
 import Loading from './Screens/Loading';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Login from './Screens/Login';
-import Student from './Screens/Student';
-import BusFaculty from './Screens/BusFaculty';
-import Header from './Screens/Header';
 import StudentTab from './Routes/StudentTab';
 import BusFacultyTab from './Routes/BusFacultyTab';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function App() {
 
@@ -31,21 +28,23 @@ export default function App() {
 
   else {
     return (
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName='Role' screenOptions={{
-          title: 'Bus Pass Scanner',
-          headerBackVisible: false,
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            fontFamily: 'Nunito-Bold'
-          }
-        }}>
-          <Stack.Screen name='Role' component={Role} options={{}} />
-          <Stack.Screen name='Login' component={Login} />
-          <Stack.Screen name='Student' component={StudentTab} />
-          <Stack.Screen name='Bus-Faculty' component={BusFacultyTab} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName='Role' screenOptions={{
+            title: 'Bus Pass Scanner',
+            headerBackVisible: false,
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
+              fontFamily: 'Nunito-Bold'
+            }
+          }}>
+            <Stack.Screen name='Role' component={Role} options={{}} />
+            <Stack.Screen name='Login' component={Login} />
+            <Stack.Screen name='Student' component={StudentTab} />
+            <Stack.Screen name='Bus-Faculty' component={BusFacultyTab} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
     )
   }
 }
