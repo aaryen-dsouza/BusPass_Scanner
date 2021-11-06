@@ -114,4 +114,91 @@ router.post('/new', (req, res) => {
     )
 })
 
+//route 'api/students/data/edit/:id'
+//PUT req
+//To edit bus student info
+router.put('/edit/:id',
+    (req, res) => {
+
+        const { name, email, branch, busBranch, qrValidTill, image, qrValid } = req.body;
+        const id = req.params.id;
+
+        if (!name, !email, !branch, !busBranch, !image, !qrValid) {
+            return res.status(400).json({
+                msg: 'Enter all fields',
+                error: true
+            })
+        }
+        Students.findById(id)
+            .then(student => {
+                if (!student) {
+                    return res.status(400).json({
+                        msg: 'No student with such id found.',
+                        error: true
+                    })
+                }
+
+                Students.findByIdAndUpdate(
+                    id,
+                    {
+                        name,
+                        email,
+                        branch,
+                        busBranch,
+                        image,
+                        qrValid
+                    },
+                    {
+                        new: true
+                    },
+                    (error, result) => {
+                        if (error) {
+                            return res.status(500).json({
+                                msg: 'Error updating',
+                                error: true
+                            })
+                        }
+
+                        return res.json({
+                            msg: 'Student updated.',
+                            result
+                        })
+                    }
+                )
+            })
+    })
+
+//route 'api/students/data/delete/:id'
+//DELETE req
+//To DELETE bus student info
+
+router.delete('/delete/:id', (req, res) => {
+    const id = req.params.id;
+
+    if (!id) {
+        return res.status(500).json({
+            error: true,
+            msg: 'Id not passed'
+        })
+    }
+
+    Students.findByIdAndDelete(id,
+        {
+            new: true
+        },
+        (error, result) => {
+            if (error) {
+                return res.status(500).json({
+                    error: true,
+                    msg: 'Erro deleting student'
+                })
+            }
+
+            return res.json({
+                msg: "Student deleted",
+                result
+            })
+        })
+})
+
 module.exports = router;

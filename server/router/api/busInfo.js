@@ -83,5 +83,91 @@ router.post('/new', (req, res) => {
     )
 })
 
+//route 'api/bus_info/data/edit/:id'
+//PUT req
+//To edit bus info
+router.put('/edit/:id',
+    (req, res) => {
+
+        const { name, busBranch, image, vacantSeats, totalSeats } = req.body;
+        const id = req.params.id;
+
+        if (!name, !busBranch, !image, !vacantSeats, !totalSeats) {
+            return res.status(400).json({
+                msg: 'Enter all fields',
+                error: true
+            })
+        }
+        BusInfo.findById(id)
+            .then(bus => {
+                if (!bus) {
+                    return res.status(400).json({
+                        msg: 'No student with such id found.',
+                        error: true
+                    })
+                }
+
+                BusInfo.findByIdAndUpdate(
+                    id,
+                    {
+                        name,
+                        busBranch,
+                        image,
+                        vacantSeats,
+                        totalSeats
+                    },
+                    {
+                        new: true
+                    },
+                    (error, result) => {
+                        if (error) {
+                            return res.status(500).json({
+                                msg: 'Error updating',
+                                error: true
+                            })
+                        }
+
+                        return res.json({
+                            msg: 'Student updated.',
+                            result
+                        })
+                    }
+                )
+            })
+    })
+
+//route 'api/bus_info/data/delete/:id'
+//DELETE req
+//To DELETE bus info
+
+router.delete('/delete/:id', (req, res) => {
+    const id = req.params.id;
+
+    if (!id) {
+        return res.status(500).json({
+            error: true,
+            msg: 'Id not passed'
+        })
+    }
+
+    BusInfo.findByIdAndDelete(id,
+        {
+            new: true
+        },
+        (error, result) => {
+            if (error) {
+                return res.status(500).json({
+                    error: true,
+                    msg: 'Erro deleting busInfo'
+                })
+            }
+
+            return res.json({
+                msg: "Bus Info deleted",
+                result
+            })
+        })
+})
+
 
 module.exports = router;

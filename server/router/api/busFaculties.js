@@ -109,4 +109,89 @@ router.post('/new', (req, res) => {
     )
 })
 
+//route 'api/bus_faculty/data/edit/:id'
+//PUT req
+//To edit bus faculty info
+router.put('/edit/:id',
+    (req, res) => {
+
+        const { name, email, busBranch, image } = req.body;
+        const id = req.params.id;
+
+        if (!name, !email, !busBranch, !image) {
+            return res.status(400).json({
+                msg: 'Enter all fields',
+                error: true
+            })
+        }
+        BusFaculty.findById(id)
+            .then(faculty => {
+                if (!faculty) {
+                    return res.status(400).json({
+                        msg: 'No faculty with such id found.',
+                        error: true
+                    })
+                }
+
+                BusFaculty.findByIdAndUpdate(
+                    id,
+                    {
+                        name,
+                        email,
+                        busBranch,
+                        image
+                    },
+                    {
+                        new: true
+                    },
+                    (error, result) => {
+                        if (error) {
+                            return res.status(500).json({
+                                msg: 'Error updating',
+                                error: true
+                            })
+                        }
+
+                        return res.json({
+                            msg: 'Faculty info updated.',
+                            result
+                        })
+                    }
+                )
+            })
+    })
+
+//route 'api/bus_faculty/data/delete/:id'
+//DELETE req
+//To DELETE bus faculty info
+
+router.delete('/delete/:id', (req, res) => {
+    const id = req.params.id;
+
+    if (!id) {
+        return res.status(500).json({
+            error: true,
+            msg: 'Id not passed'
+        })
+    }
+
+    BusFaculty.findByIdAndDelete(id,
+        {
+            new: true
+        },
+        (error, result) => {
+            if (error) {
+                return res.status(500).json({
+                    error: true,
+                    msg: 'Error deleting faculty info'
+                })
+            }
+
+            return res.json({
+                msg: "Faculty Info deleted",
+                result
+            })
+        })
+})
+
 module.exports = router

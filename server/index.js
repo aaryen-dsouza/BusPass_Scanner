@@ -5,7 +5,9 @@ const cors = require('cors');
 const database = require('./database');
 
 const app = express()
-const port = process.env.PORT
+const port = process.env.PORT;
+
+const multiRoute = require('./router/api/multiRoute')
 
 app.use(morgan('dev'));
 app.use(cors());
@@ -13,10 +15,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //data fetch routes
-app.use('/api/students/data', require('./router/api/students'))
-app.use('/api/admin/data', require('./router/api/admin'))
-app.use('/api/bus_faculty/data', require('./router/api/busFaculties'))
-app.use('/api/bus_info/data', require('./router/api/busInfo'))
+app.use('/api/data/', multiRoute)
+
+
 
 //auth routes
 app.use('/api/student/auth', require('./router/api/auth/student'))
