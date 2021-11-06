@@ -395,7 +395,7 @@ const put = (req, res) => {
     }
 
     if (type === 'STUDENT') {
-        const { name, email, branch, busBranch, qrValidTill, image, qrValid } = req.body;
+        const { name, email, branch, busBranch, image, qrValid } = req.body;
         const id = req.params.id;
 
         if (!name, !email, !branch, !busBranch, !image, !qrValid) {

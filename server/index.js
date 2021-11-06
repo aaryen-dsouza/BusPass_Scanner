@@ -7,7 +7,8 @@ const database = require('./database');
 const app = express()
 const port = process.env.PORT;
 
-const multiRoute = require('./router/api/multiRoute')
+const multiRoute = require('./router/api/multiRoute');
+const multiAuth = require('./router/api/multiAuth');
 
 app.use(morgan('dev'));
 app.use(cors());
@@ -20,10 +21,7 @@ app.use('/api/data/', multiRoute)
 
 
 //auth routes
-app.use('/api/student/auth', require('./router/api/auth/student'))
-app.use('/api/admin/auth', require('./router/api/auth/admin'))
-app.use('/api/bus_faculty/auth', require('./router/api/auth/busFaculties'))
-
+app.use('/api/auth/', multiAuth);
 
 
 
