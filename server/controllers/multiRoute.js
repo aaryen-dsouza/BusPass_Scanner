@@ -10,7 +10,7 @@ const BusInfo = require('../model/busInfoModel');
 const Admin = require('../model/adminModel');
 
 const getAll = (req, res) => {
-    const { type } = req.body;
+    const { type } = req.headers;
 
     if (!type) {
         return res.status(400).json({
@@ -92,7 +92,7 @@ const getAll = (req, res) => {
 }
 
 const getByBranch = (req, res) => {
-    const { type } = req.body;
+    const { type } = req.headers;
 
     if (!type) {
         return res.status(400).json({
@@ -545,7 +545,7 @@ const put = (req, res) => {
 }
 
 const delet = (req, res) => {
-    const { type } = req.body;
+    const { type } = req.headers;
 
     if (!type) {
         return res.status(400).json({

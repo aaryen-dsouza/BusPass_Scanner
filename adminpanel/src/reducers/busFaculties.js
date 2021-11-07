@@ -32,6 +32,13 @@ function busFaculties(state = {
                 busFaculties: [...state.busFaculties, action.payload]
             }
 
+        case ActionTypes.EDIT_BUS_FACULTY:
+            return {
+                ...state,
+                isLoading: false,
+                busFaculties: state.busFaculties.map(faculty => faculty._id === action.payload._id ? action.payload : faculty)
+            }
+
         default:
             return state;
     }

@@ -172,7 +172,7 @@ const login = (req, res) => {
 }
 
 const getUser = (req, res) => {
-    const { type } = req.body;
+    const { type } = req.headers;
 
     if (!type) {
         return res.status(400).json({

@@ -15,8 +15,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//types
+// ADMIN
+// STUDENT
+// BUS_FACULTY
+// BUS_INFO
+
 //data fetch routes
-app.use('/api/data/', multiRoute)
+app.use('/api/data/', multiRoute);
 
 
 

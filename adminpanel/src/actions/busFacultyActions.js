@@ -5,11 +5,12 @@ export const fetchBusFaculties = () => dispatch => {
         type: ActionTypes.BUS_FACULTIES_LOADING
     })
     const token = localStorage.getItem('profile')
-    return fetch('api/bus_faculty/data/all', {
+    return fetch('api/data/all', {
         method: 'GET',
         headers: {
             "Content-type": "application/json",
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`,
+            "type": "BUS_FACULTY"
         }
     })
         .then(response => response.json())

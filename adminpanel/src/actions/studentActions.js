@@ -6,11 +6,12 @@ export const fetchStudents = () => dispatch => {
         type: ActionTypes.STUDENT_LOADING
     })
     const token = localStorage.getItem('profile')
-    return fetch('api/students/data/all', {
+    return fetch('api/data/all', {
         method: 'GET',
         headers: {
             "Content-type": "application/json",
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`,
+            "type": "STUDENT"
         }
     })
         .then(response => response.json())

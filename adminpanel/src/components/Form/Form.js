@@ -48,12 +48,17 @@ function Form() {
 
 
         if (formType === 'Student') {
-            return fetch('api/students/data/new', {
+
+            const formF = {
+                ...formData,
+                type: 'STUDENT'
+            }
+            return fetch('api/data/new', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(formF)
             })
                 .then(response => response.json())
                 .then(data => {
@@ -84,13 +89,17 @@ function Form() {
         }
 
         else if (formType === 'Bus Faculty') {
+            const formF = {
+                ...formData,
+                type: 'BUS_FACULTY'
+            }
 
-            return fetch('api/bus_faculty/data/new', {
+            return fetch('api/data/new', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(formF)
             })
                 .then(response => response.json())
                 .then(data => {
@@ -120,12 +129,17 @@ function Form() {
                 .catch(err => console.log(err.message))
         }
         else {
-            return fetch('api/bus_info/data/new', {
+            const formF = {
+                ...formData,
+                type: 'BUS_INFO'
+            }
+            return fetch('api/data/new', {
+
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(formF)
             })
                 .then(response => response.json())
                 .then(data => {

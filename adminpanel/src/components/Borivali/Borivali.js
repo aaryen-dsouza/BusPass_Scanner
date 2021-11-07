@@ -14,14 +14,8 @@ import {
 function Borivali(props) {
     const { students, faculties, buses } = props;
     return (
-        <div style={{
-            display: 'flex',
-            width: '100%',
-            justifyContent: 'center',
-            marginTop: '40px',
-            flexDirection: 'column'
-        }}>
-            <TableContainer component={Paper} sx={{ width: '80%', marginBottom: '40px' }}>
+        <div style={{ width: '100%' }}>
+            <TableContainer component={Paper} sx={{ width: '80%', margin: '30px auto' }}>
                 <Typography variant='h6' align='center'>Students</Typography>
                 <Table sx={{ minWidth: 650, marginLeft: 'auto', marginRight: 'auto' }} aria-label="simple table">
                     <TableHead>
@@ -57,7 +51,7 @@ function Borivali(props) {
 
 
 
-            <TableContainer component={Paper} sx={{ width: '80%', marginBottom: '40px' }}>
+            <TableContainer component={Paper} sx={{ width: '80%', margin: '30px auto' }}>
                 <Typography variant='h6' align='center'>Bus Faculties</Typography>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
@@ -85,7 +79,7 @@ function Borivali(props) {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <TableContainer component={Paper} sx={{ width: '80%', marginBottom: '40px' }}>
+            <TableContainer component={Paper} sx={{ width: '80%', margin: '30px auto' }}>
                 <Typography variant='h6' align='center'>Buses</Typography>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>

@@ -64,12 +64,17 @@ function Navbar({ isLogin, setisLogin }) {
             }
         }
         else {
-            return fetch('api/admin/auth', {
+
+            const loginF = {
+                ...loginInfo,
+                type: 'ADMIN'
+            }
+            return fetch('api/auth/', {
                 method: 'POST',
                 headers: {
                     "Content-type": "application/json"
                 },
-                body: JSON.stringify(loginInfo)
+                body: JSON.stringify(loginF)
             })
                 .then(response => {
                     return response.json()

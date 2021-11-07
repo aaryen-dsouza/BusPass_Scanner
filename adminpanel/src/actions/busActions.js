@@ -5,11 +5,12 @@ export const fetchBuses = () => dispatch => {
         type: ActionTypes.BUSES_LOADING
     })
     const token = localStorage.getItem('profile')
-    return fetch('api/bus_info/data/all', {
+    return fetch('api/data/all', {
         method: 'GET',
         headers: {
             "Content-type": "application/json",
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`,
+            "type": "BUS_INFO"
         }
     })
         .then(response => response.json())

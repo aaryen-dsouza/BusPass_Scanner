@@ -20,11 +20,12 @@ function Home() {
         // console.log('loaduser triggered.')
         const token = localStorage.getItem('profile');
         if (token) {
-            fetch('api/admin/auth', {
+            fetch('api/auth/', {
                 method: 'GET',
                 headers: {
                     "Content-type": "application/json",
-                    "Authorization": `Bearer ${token}`
+                    "Authorization": `Bearer ${token}`,
+                    "type": "ADMIN"
                 }
             })
                 .then(response => response.json())

@@ -32,6 +32,13 @@ function students(state = {
                 students: [...state.students, action.payload]
             }
 
+        case ActionTypes.EDIT_STUDENT:
+            return {
+                ...state,
+                isLoading: false,
+                students: state.students.map(student => student._id === action.payload._id ? action.payload : student)
+            }
+
         default:
             return state;
     }
