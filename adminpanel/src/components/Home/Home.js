@@ -8,6 +8,7 @@ import useStyles from './style';
 import { useDispatch } from 'react-redux';
 import AdminPanel from '../AdminPanel/AdminPanel';
 
+
 function Home() {
     const dispatch = useDispatch();
     const [isLogin, setisLogin] = useState(false);
@@ -51,7 +52,9 @@ function Home() {
             <Navbar isLogin={isLogin} setisLogin={setisLogin} />
             {
                 isLogin ? (
+
                     <AdminPanel />
+
                 ) : (
                     <Container>
                         <div className={classes.noAuthContainer}>

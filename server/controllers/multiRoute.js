@@ -168,9 +168,9 @@ const post = (req, res) => {
     }
 
     if (type === 'STUDENT') {
-        const { name, email, password, branch, busBranch } = req.body;
+        const { name, email, password, branch, busBranch, image, qrValid, qrValidTill } = req.body;
 
-        if (!name || !email || !password || !branch || !busBranch) {
+        if (!name || !email || !password || !branch || !busBranch || !image || !qrValid || !qrValidTill) {
             return res.status(400).json({
                 msg: "Enter all fields",
                 error: true
@@ -196,7 +196,10 @@ const post = (req, res) => {
                 email,
                 password: hashedPass,
                 branch,
-                busBranch
+                busBranch,
+                image,
+                qrValid,
+                qrValidTill
             },
             (error, data) => {
                 if (error) {
@@ -229,9 +232,9 @@ const post = (req, res) => {
     }
 
     else if (type === 'BUS_FACULTY') {
-        const { name, email, password, busBranch } = req.body;
+        const { name, email, password, busBranch, image } = req.body;
 
-        if (!name || !email || !password || !busBranch) {
+        if (!name || !email || !password || !busBranch || !image) {
             return res.status(400).json({
                 msg: "Enter all fields",
                 error: true
@@ -256,7 +259,8 @@ const post = (req, res) => {
                 name,
                 email,
                 password: hashedPass,
-                busBranch
+                busBranch,
+                image
             },
             (error, data) => {
                 if (error) {
@@ -289,9 +293,9 @@ const post = (req, res) => {
     }
 
     else if (type === 'BUS_INFO') {
-        const { name, busBranch, vacantSeats, totalSeats } = req.body;
+        const { name, busBranch, vacantSeats, totalSeats, image } = req.body;
 
-        if (!name || !busBranch || !vacantSeats || !totalSeats) {
+        if (!name || !busBranch || !vacantSeats || !totalSeats || !image) {
             return res.status(400).json({
                 msg: "Enter all fields",
                 error: true
@@ -303,7 +307,8 @@ const post = (req, res) => {
                 name,
                 busBranch,
                 vacantSeats,
-                totalSeats
+                totalSeats,
+                image
             },
             (error, data) => {
                 if (error) {
@@ -398,7 +403,7 @@ const put = (req, res) => {
         const { name, email, branch, busBranch, image, qrValid } = req.body;
         const id = req.params.id;
 
-        if (!name, !email, !branch, !busBranch, !image, !qrValid) {
+        if (!name, !email, !branch, !busBranch, !image) {
             return res.status(400).json({
                 msg: 'Enter all fields',
                 error: true

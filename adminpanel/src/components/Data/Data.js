@@ -7,12 +7,127 @@ import {
 import Vasai from '../Vasai/Vasai';
 import Borivali from '../Borivali/Borivali';
 import MiraRoad from '../Mira Road/MiraRoad';
+import { useDispatch } from 'react-redux';
 
-function Data() {
+
+function Data(props) {
     const [busBranch, setbusBranch] = useState('Borivali');
     const students = useSelector(state => state.students);
     const busFaculties = useSelector(state => state.busFaculties);
     const buses = useSelector(state => state.buses);
+    const [open, setOpen] = React.useState(false);
+    const [formType, setformType] = useState('');
+    const [editData, setEditData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        branch: '',
+        busBranch: '',
+        vacantSeats: 0,
+        totalSeats: 0,
+        image: '',
+        qrValid: true,
+        qrValidTill: null,
+    });
+    const handleDialog = () => setOpen(!open);
+    const dispatch = useDispatch();
+
+    const deleteUser = (id, type) => {
+
+        if (type === 'Student') {
+            fetch('/api/data/delete/' + id, {
+                method: 'DELETE',
+                headers: {
+                    "type": "STUDENT"
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.log(data.msg)
+                    }
+                    else {
+                        dispatch({
+                            type: 'DELETE_STUDENT',
+                            payload: id
+                        })
+                        setEditData({
+                            name: '',
+                            email: '',
+                            password: '',
+                            branch: '',
+                            busBranch: '',
+                            vacantSeats: 0,
+                            totalSeats: 0,
+                            image: '',
+                            qrValid: true,
+                            qrValidTill: null,
+                        })
+                        console.log('Student deleted')
+                    }
+                })
+                .catch(err => console.log(err.message))
+
+        }
+        else if (type === 'Bus Faculty') {
+            fetch('/api/data/delete/' + id, {
+                method: 'DELETE',
+                headers: {
+                    "type": "BUS_FACULTY"
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.log(data.msg)
+                    }
+                    else {
+                        dispatch({
+                            type: 'DELETE_BUS_FACULTY',
+                            payload: id
+                        })
+                        setEditData({
+                            name: '',
+                            email: '',
+                            password: '',
+                            branch: '',
+                            busBranch: '',
+                            vacantSeats: 0,
+                            totalSeats: 0,
+                            image: '',
+                            qrValid: true,
+                            qrValidTill: null,
+                        })
+                        console.log('Faculty deleted')
+                    }
+                })
+                .catch(err => console.log(err.message))
+        }
+        else {
+            fetch('/api/data/delete/' + id, {
+                method: 'DELETE',
+                headers: {
+                    "type": "BUS_INFO"
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.log(data.msg)
+                    }
+                    else {
+                        dispatch({
+                            type: 'DELETE_BUS',
+                            payload: id
+                        })
+
+                        console.log('Bus Info deleted')
+                    }
+                })
+                .catch(err => console.log(err.message))
+        }
+    }
+
 
     //Filtering borivali people
     const borivaliStudents = students.students.filter(student => student.busBranch === 'Borivali');
@@ -48,7 +163,15 @@ function Data() {
                     <Borivali
                         students={borivaliStudents}
                         faculties={borivaliFaculties}
-                        buses={borivaliBuses} />
+                        buses={borivaliBuses}
+                        editData={editData}
+                        setEditData={setEditData}
+                        formType={formType}
+                        setformType={setformType}
+                        open={open}
+                        handleDialog={handleDialog}
+                        deleteUser={deleteUser}
+                    />
                 )
             }
             {
@@ -57,6 +180,13 @@ function Data() {
                         students={miraRoadStudents}
                         faculties={miraRoadFaculties}
                         buses={miraRoadBuses}
+                        editData={editData}
+                        setEditData={setEditData}
+                        formType={formType}
+                        setformType={setformType}
+                        open={open}
+                        handleDialog={handleDialog}
+                        deleteUser={deleteUser}
                     />
                 )
             }
@@ -66,6 +196,13 @@ function Data() {
                         students={vasaiStudents}
                         faculties={vasaiFaculties}
                         buses={vasaiBuses}
+                        editData={editData}
+                        setEditData={setEditData}
+                        formType={formType}
+                        setformType={setformType}
+                        open={open}
+                        handleDialog={handleDialog}
+                        deleteUser={deleteUser}
                     />
                 )
             }

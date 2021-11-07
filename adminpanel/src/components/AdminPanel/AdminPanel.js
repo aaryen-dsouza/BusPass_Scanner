@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchStudents } from '../../actions/studentActions';
 import { fetchBuses } from '../../actions/busActions';
 import { fetchBusFaculties } from '../../actions/busFacultyActions';
-import Form from '../Form/Form';
+
 import Data from '../Data/Data';
+import RegisterForm from '../Form/RegisterForm';
+
 
 
 function AdminPanel() {
     const dispatch = useDispatch();
+
 
 
     useEffect(() => {
@@ -18,7 +21,17 @@ function AdminPanel() {
     }, [])
     return (
         <>
-            <Form />
+            <div style={{
+                display: 'flex',
+                width: '100%',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: '30px'
+            }}>
+
+                <RegisterForm />
+
+            </div>
             <Data />
         </>
     )
