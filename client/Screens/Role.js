@@ -1,8 +1,71 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import globalStyles from '../styles/globalStyles';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch } from 'react-redux';
+
 
 const Role = ({ navigation }) => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        loadUser()
+    }, [])
+
+    const loadUser = async () => {
+        const token = await AsyncStorage.getItem('profile');
+        const type = await AsyncStorage.getItem('type');
+
+        if (token && type) {
+            if (type === 'Student') {
+                fetch('http://192.168.0.108:3001/api/auth/', {
+                    method: 'GET',
+                    headers: {
+                        "Content-type": "application/json",
+                        "Authorization": `Bearer ${token}`,
+                        "type": "STUDENT"
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            console.log(data.msg);
+                        }
+                        else {
+                            dispatch({
+                                type: 'LOAD_USER',
+                                payload: data
+                            })
+                            navigation.navigate('Student')
+                        }
+                    })
+                    .catch(err => console.log(err.message))
+            }
+            else {
+                fetch('http://192.168.0.108:3001/api/auth/', {
+                    method: 'GET',
+                    headers: {
+                        "Content-type": "application/json",
+                        "Authorization": `Bearer ${token}`,
+                        "type": "BUS_FACULTY"
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            console.log(data.msg);
+                        }
+                        else {
+                            dispatch({
+                                type: 'LOAD_USER',
+                                payload: data
+                            })
+                            navigation.navigate('Bus-Faculty')
+                        }
+                    })
+                    .catch(err => console.log(err.message))
+            }
+        }
+    }
     return (
         <View style={{ ...globalStyles.container, alignItems: 'center' }}>
 
@@ -10,7 +73,7 @@ const Role = ({ navigation }) => {
             <TouchableWithoutFeedback onPress={() => navigation.navigate('Login', { type: 'Student' })}>
                 <Text style={styles.roleText}>Student</Text>
             </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate('Login', { type: 'Bus faculty' })}>
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('Login', { type: 'Bus Faculty' })}>
                 <Text style={{ ...styles.roleText, paddingHorizontal: 80 }}>Bus Faculty</Text>
             </TouchableWithoutFeedback>
         </View>

@@ -13,7 +13,6 @@ const auth = (req, res, next) => {
     }
     else {
         const token = authorization.replace("Bearer ", "");
-        console.log(token);
 
         jwt.verify(token, process.env.SECRET_KEY, (error, payload) => {
             if (error) {

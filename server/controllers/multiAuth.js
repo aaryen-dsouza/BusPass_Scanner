@@ -59,7 +59,8 @@ const login = (req, res) => {
                         return res.json({
                             token: token,
                             msg: "Login Successfull",
-                            student: student
+                            student: student,
+                            type: 'Student'
                         })
                     }
                 )
@@ -108,7 +109,8 @@ const login = (req, res) => {
                         return res.json({
                             token: token,
                             msg: "Login Successfull",
-                            busFaculty: faculty
+                            busFaculty: faculty,
+                            type: 'Bus Faculty'
                         })
                     }
                 )
@@ -192,7 +194,8 @@ const getUser = (req, res) => {
                     })
                 }
                 return res.json({
-                    student: student
+                    student: student,
+                    type: 'Student'
                 })
             })
     }
@@ -208,7 +211,8 @@ const getUser = (req, res) => {
                     })
                 }
                 return res.json({
-                    busFaculty: faculty
+                    busFaculty: faculty,
+                    type: 'Bus Faculty'
                 })
             })
     }

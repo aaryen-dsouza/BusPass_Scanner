@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import QrCode from '../Screens/QrCode';
 import VacancyOfSeats from '../Screens/VacancyOfSeats';
 import AccountInfo from '../Screens/AccountInfo';
-import { Ionicons, FontAwesome, MaterialIcons } from '@expo/vector-icons'
+import { Ionicons, FontAwesome, MaterialIcons } from '@expo/vector-icons';
 
 const StudentTab = () => {
     const Tabs = createBottomTabNavigator();

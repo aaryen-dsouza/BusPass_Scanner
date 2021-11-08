@@ -50,7 +50,8 @@ function EditForm(props) {
                 .then(response => response.json())
                 .then(data => {
                     if (data.error) {
-                        seterror(data.msg)
+                        seterror(data.msg);
+                        console.log(data.error);
                     }
 
                     else {

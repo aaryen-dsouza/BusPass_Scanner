@@ -435,7 +435,7 @@ const put = (req, res) => {
                         if (error) {
                             return res.status(500).json({
                                 msg: 'Error updating',
-                                error: true
+                                error: error
                             })
                         }
 
@@ -533,7 +533,7 @@ const put = (req, res) => {
                         }
 
                         return res.json({
-                            msg: 'Student updated.',
+                            msg: 'Bus info updated.',
                             result
                         })
                     }
