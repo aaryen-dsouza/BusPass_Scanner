@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, Button, StyleSheet, TouchableWithoutFeedback, TextInput, Pressable } from 'react-native';
 import globalStyles from '../styles/globalStyles';
 import { useDispatch } from 'react-redux';
+import { baseUrl } from '../baseUrl';
 
 const Login = ({ route, navigation }) => {
     const [formData, setformData] = useState({
@@ -19,7 +20,7 @@ const Login = ({ route, navigation }) => {
                 ...formData,
                 type: 'STUDENT'
             }
-            return fetch('http://192.168.0.108:3001/api/auth/', {
+            return fetch(baseUrl + 'api/auth', {
                 method: 'POST',
                 headers: {
                     "Content-type": "application/json"
@@ -53,7 +54,7 @@ const Login = ({ route, navigation }) => {
                 ...formData,
                 type: 'BUS_FACULTY'
             }
-            return fetch('http://192.168.0.108:3001/api/auth/', {
+            return fetch(baseUrl + 'api/auth', {
                 method: 'POST',
                 headers: {
                     "Content-type": "application/json"

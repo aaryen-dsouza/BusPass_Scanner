@@ -322,13 +322,13 @@ function EditForm(props) {
                                         </>
                                     )
                                 }
-                                <div className={classes.fileInput}>
+                                {/* <div className={classes.fileInput}>
                                     <FileBase
                                         type="file"
                                         multiple={false}
                                         onDone={({ base64 }) => setEditData({ ...editData, image: base64 })}
                                     />
-                                </div>
+                                </div> */}
                                 <Button variant='contained' type='submit'>Save Changes</Button>
                             </form>
                         </Container>

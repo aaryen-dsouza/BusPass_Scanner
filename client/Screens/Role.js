@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import globalStyles from '../styles/globalStyles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useDispatch } from 'react-redux';
+import { baseUrl } from '../baseUrl';
 
 
 const Role = ({ navigation }) => {
@@ -17,7 +18,7 @@ const Role = ({ navigation }) => {
 
         if (token && type) {
             if (type === 'Student') {
-                fetch('http://192.168.0.108:3001/api/auth/', {
+                fetch(baseUrl + 'api/auth/', {
                     method: 'GET',
                     headers: {
                         "Content-type": "application/json",
@@ -41,7 +42,7 @@ const Role = ({ navigation }) => {
                     .catch(err => console.log(err.message))
             }
             else {
-                fetch('http://192.168.0.108:3001/api/auth/', {
+                fetch(baseUrl + 'api/auth/', {
                     method: 'GET',
                     headers: {
                         "Content-type": "application/json",

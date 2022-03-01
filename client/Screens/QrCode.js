@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import QRCode from 'react-native-qrcode-svg';
 import globalStyles from '../styles/globalStyles';
+import { baseUrl } from '../baseUrl';
 
 const QrCode = () => {
     const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const QrCode = () => {
 
     const fetchBuses = async () => {
         const token = await AsyncStorage.getItem('profile')
-        return fetch('http://192.168.0.108:3001/api/data/' + busBranch, {
+        return fetch(baseUrl + 'api/data/' + busBranch, {
             method: 'GET',
             headers: {
                 "Content-type": "application/json",

@@ -3,6 +3,7 @@ import { View, Text, Alert, Pressable } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import globalStyles from '../styles/globalStyles';
 import { Image, ListItem } from 'react-native-elements';
+import { baseUrl } from '../baseUrl';
 
 const VacancyOfSeats = ({ navigation }) => {
     const buses = useSelector(state => state.buses);
@@ -14,7 +15,7 @@ const VacancyOfSeats = ({ navigation }) => {
             vacantSeats: bus.vacantSeats - 1,
             type: 'BUS_INFO'
         }
-        return fetch('http://192.168.0.108:3001/api/data/edit/' + bus._id, {
+        return fetch(baseUrl + 'api/data/edit/' + bus._id, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json'

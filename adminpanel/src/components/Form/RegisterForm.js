@@ -343,13 +343,13 @@ function RegisterForm() {
                                         </>
                                     )
                                 }
-                                <div className={classes.fileInput}>
+                                {/* <div className={classes.fileInput}>
                                     <FileBase
                                         type="file"
                                         multiple={false}
                                         onDone={({ base64 }) => setformData({ ...formData, image: base64 })}
                                     />
-                                </div>
+                                </div> */}
                                 <Button variant='contained' type='submit'>Submit</Button>
                             </form>
                         </Container>

@@ -26,7 +26,7 @@ const QrScanner = () => {
         const dataF = JSON.parse(data);
         setResult(dataF);
         setVisible(true);
-
+        console.log('Code scanned.')
         console.log('Type: ' + type + '\nData: ' + data);
     };
 
@@ -44,6 +44,7 @@ const QrScanner = () => {
     return (
         <>
             <View style={{ ...globalStyles.container }}>
+                <Text style={{ textAlign: 'center', fontFamily: 'Nunito-Bold', fontSize: 20, marginTop: 75 }}> Scan the student's QR Code</Text>
                 <BarCodeScanner
                     onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                     style={StyleSheet.absoluteFillObject}
