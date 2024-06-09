@@ -10,7 +10,7 @@
     "admin": "npm start --prefix adminpanel",
     "dev": "concurrently \" npm run server\" \"npm run admin\""
   },
-  "author": "Maharsh Bajpai",
+  "author": "Maharsh Bajpai, Aaryen D'Souza",
   "license": "ISC",
   "dependencies": {
     "@mui/icons-material": "^5.0.1",
