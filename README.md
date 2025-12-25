@@ -215,4 +215,4 @@ Contributions are always welcome!
 ## Contact
 
 Contact
-For any questions or feedback, please get in touch with the project maintainers at maharsh.bajpai27@gmail.com and dc.aaryen@gmail.com
+For any questions or feedback, please get in touch with the project maintainers at rohan.darji0409@gmail.com, maharsh.bajpai27@gmail.com and dc.aaryen@gmail.com
